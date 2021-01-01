@@ -1,0 +1,10 @@
+user:
+  dom0:
+    - split-ssh.vault.vm
+
+  fedora-32:
+    - split-ssh.vault.packages
+
+  ssh-vault:
+    - split-ssh.vault.config
+    - split-ssh.vault.rpc

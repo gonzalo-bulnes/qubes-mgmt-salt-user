@@ -1,0 +1,9 @@
+user:
+  dom0:
+    - split-ssh.client.vm
+
+  fedora-32:
+    - split-ssh.client.packages
+
+  ssh-client:
+    - split-ssh.client.sock

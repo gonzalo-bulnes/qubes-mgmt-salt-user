@@ -1,0 +1,11 @@
+
+# Create split-SSH socket
+#
+# See /srv/salt/split-ssh in dom0 for details.
+SSH_VAULT_VM="ssh-vault"
+
+if [[ "$SSH_VAULT_VM" != "" ]]; then
+	export SSH_SOCK=~user/.SSH_AGENT_$SSH_VAULT_VM
+	rm -f "$SSH_SOCK"
+	sudo -u user /bin/sh -c "umask 117 && ncat -k -l -U '$SSH_SOCK' -c 'qrexec-client-vm $SSH_VAULT_VM qubes.SSHAgent' &"
+fi

@@ -1,0 +1,6 @@
+
+# Add the split-SSH RPC
+#
+# See /srv/salt/split-ssh in dom0 for details.
+rm -f /etc/qubes-rpc/qubes.SSHAgent
+ln -s /rw/config/split-ssh/qubes.SSHAgent /etc/qubes-rpc/qubes.SSHAgent

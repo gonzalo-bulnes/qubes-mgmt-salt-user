@@ -1,0 +1,7 @@
+
+# Ensure ssh-add is started automatically
+#
+# See /srv/salt/split-ssh in dom0 for details.
+rm -f ~user/.config/autostart/ssh-add.desktop
+mkdir -p ~user/.config/autostart/
+ln -s /rw/config/split-ssh/ssh-add.desktop ~user/.config/autostart/ssh-add.desktop

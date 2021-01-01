@@ -3,6 +3,8 @@ User Salt States for Qubes OS
 
 A collection of user Salt states for Qubes OS.
 
+- [Split-SSH](./states/split-ssh)
+
 Usage
 -----
 

@@ -43,7 +43,7 @@ Below are my thoughts on what could make this Salt state more useful. Please ope
 
 ### Packaging
 
-If you have thoughts on what's a good way to package this Salt files, I'd love to learn!
+If you have thoughts on what's a good way to package this Salt files, [I'd love to learn](https://github.com/gonzalo-bulnes/qubes-mgmt-salt-user/discussions/2)!
 
 ### Wishlist
 

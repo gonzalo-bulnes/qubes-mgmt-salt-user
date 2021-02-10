@@ -10,8 +10,6 @@ Source0:        %{name}-%{version}.tar.gz
 Group:          System administration tools
 BuildArch:      noarch
 
-BuildRequires:  gnupg2
-
 %description
 A Salt state that enables split-SSH in Qubes OS.
 

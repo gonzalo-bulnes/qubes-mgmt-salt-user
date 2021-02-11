@@ -37,11 +37,11 @@ sign-source-archive:
 
 .PHONY: sign-source-package
 sign-source-package:
-	${GPG_CMD} --local-user "${GPG_NAME}" --sign --armor --output ${SRPM_PACKAGE_PATH}${SRPM_PACKAGE_NAME}.asc --detach ${SRPM_PACKAGE_PATH}${SRPM_PACKAGE_NAME}
+	rpm --resign ${SRPM_PACKAGE_PATH}${SRPM_PACKAGE_NAME}
 
 .PHONY: sign-package
 sign-package:
-	${GPG_CMD} --local-user "${GPG_NAME}" --sign --armor --output ${RPM_PACKAGE_PATH}${RPM_PACKAGE_NAME}.asc --detach ${RPM_PACKAGE_PATH}${RPM_PACKAGE_NAME}
+	rpm --resign ${RPM_PACKAGE_PATH}${RPM_PACKAGE_NAME}
 
 .PHONY: clean
 clean:

@@ -103,23 +103,25 @@ Note that _dom0_ is always implicitly targetted by `qubesctl` (and appears in th
 sudo qubesctl --skip-dom0 --targets=fedora-32,ssh-client,ssh-vault state.apply # in this example, that would be enough if the qubes already exist
 ```
 
-Contributing
-------------
-
-### Known issues
-
-#### Top file merging strategy
-
-After enabling the `user` environment, applying the state causes the following warning:
-
-```sh
-[WARNING ] top_file_merging_strategy is set to 'merge' and multiple top files were found. Merging order is not deterministic, it may be desirable to either set top_file_merging_strategy to 'same' or use the 'env_order' configuration parameter to specify the merging order.
-```
-
-I haven't yet looked up where the `top_file_merging_strategy` can be configured.
-
 References
 ----------
 
 - [Copying to _dom0_](https://www.qubes-os.org/doc/copy-from-dom0)
+
+Contributions
+-------------
+
+Contributions are welcome! Please refer to the [contribution guidelines][contributing] to get started.
+
+Please note that this project is released with a [Contributor Code of Conduct][coc]. By participating in this project you agree to abide by its terms.
+
+  [contributing]: ./CONTRIBUTING.md
+  [coc]: ./CODE_OF_CONDUCT.md
+
+License
+-------
+
+Copyright © 2021 Gonzalo Bulnes Guilpain
+
+This project is released under the GNU General Public License v2 (see [LICENSE](LICENSE.md)).
 

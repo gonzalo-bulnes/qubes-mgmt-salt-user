@@ -3,7 +3,10 @@ User Salt States for Qubes OS
 
 A collection of user Salt states for Qubes OS.
 
-- [Split-SSH](./states/split-ssh)
+- **Split-SSH** ([sources][split-ssh-src], [packaging][split-ssh-pkg])
+
+  [split-ssh-src]: ./states/split-ssh/src
+  [split-ssh-pkg]: ./states/split-ssh
 
 Usage
 -----
@@ -32,7 +35,13 @@ This repository contains multiple states and it is not required to use them all.
 
 In order to be able to use a state, its definition should be present in the `/srv/user_salt/` directory of _dom0_.
 
-**Security warning**: Since any domain is _less trusted_ than _dom0_ (by definition), copying anything into _dom0_ requires extreme caution. See [References](#references) for details, and use own judgement.
+
+> ⚠ **Security warning**: Since any domain is _less trusted_ than _dom0_ (by definition), copying anything into _dom0_ requires extreme caution. See [References](#references) for details, and use own judgement.
+>
+> Next to each state **sources** (e.g. [split-SSH sources][split-ssh-src]), this repository provides **packaging tools** (e.g. [split-SSH packaging][split-ssh-pkg]) that allow to take advantage of [dom0's secure update][secure-update] to install the sources. That's what I prefer, but please bear in mind that your circumstances and mine could be different.
+
+  [secure-update]: https://www.qubes-os.org/doc/dom0-secure-updates
+
 
 No matter how you decide to perform this step, the end result should be a directory containing one or more `.top` files (and the corresponding `.sls` and other files):
 
@@ -112,5 +121,5 @@ I haven't yet looked up where the `top_file_merging_strategy` can be configured.
 References
 ----------
 
-- Copying to _dom0_. (If you know a good reference for this, please open an issue!)
+- [Copying to _dom0_](https://www.qubes-os.org/doc/copy-from-dom0)
 

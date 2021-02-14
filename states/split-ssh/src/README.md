@@ -38,20 +38,6 @@ sudo qubesctl --targets=fedora-32,ssh-client,ssh-vault state.apply
 
 Once the state is enforced, create new SSH keys in `ssh-vault` (or copy existing keys if you prefer).
 
-Contributing
-------------
-
-Below are my thoughts on what could make this Salt state more useful. Please open an issue and share yours! 
-
-### Packaging
-
-If you have thoughts on what's a good way to package this Salt files, [I'd love to learn](https://github.com/gonzalo-bulnes/qubes-mgmt-salt-user/discussions/2)!
-
-### Wishlist
-
-- Refactoring the `fedora-32` target to become "whatever the templates are for the vault and the client".
-- Targetting the SSH clients through Salt ~~*grains*~~ *pillar* instead of creating a single qube would allow multiple clients to be defined at once.
-
 References
 ----------
 

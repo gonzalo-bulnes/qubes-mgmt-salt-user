@@ -13,9 +13,11 @@ Overview
 Installation
 ------------
 
-_I'm not sure what's the best way to distribute Salt state files! (See [Contributing](#contributing).)_
-
 Copy, or type the contents of this repository into `/srv/salt/split-ssh/` (inspect the surounding files and apply similar permissions and ownership to the `srv/salt/split-ssh` directory).
+
+Alternatively, you can build and sign an RPM package in order to install it in _dom0_. See [qubes-mgmt-salt-user-split-ssh][rpm].
+
+  [rpm]: https://github.com/gonzalo-bulnes/qubes-mgmt-salt-user/tree/main/states/split-ssh
 
 Usage
 -----

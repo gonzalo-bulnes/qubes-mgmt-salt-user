@@ -22,6 +22,9 @@ RPM_PACKAGE_PATH = ${TMP}noarch/
 # The ID of your GPG key will likely be different
 GPG_NAME ?= "Key ID"
 
+# The formula directory name follows Salt conventions
+SALT_FORMULA_PATH = src/split-ssh-formula/
+
 # I use split-GPG on Qubes OS, replace this by "gpg" if needed
 define GPG_CMD
 	qubes-gpg-client-wrapper
@@ -43,7 +46,7 @@ verify-sources:
 # Build the source archive, the source package (SRPM) and the package (RPM)
 .PHONY: build
 build:
-	cd src && tito build --rpm --offline && cd -
+	cd ${SALT_FORMULA_PATH} && tito build --rpm --offline && cd -
 
 # Test the RPM package
 .PHONY: test

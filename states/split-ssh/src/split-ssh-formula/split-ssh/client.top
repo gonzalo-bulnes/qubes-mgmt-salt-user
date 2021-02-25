@@ -2,8 +2,11 @@ user:
   dom0:
     - split-ssh.client.vm
 
-  fedora-32:
+  'split-ssh-role:client-template':
+    - match: pillar
     - split-ssh.client.packages
 
-  ssh-client:
+  'split-ssh-role:client':
+    - match: pillar
     - split-ssh.client.sock
+

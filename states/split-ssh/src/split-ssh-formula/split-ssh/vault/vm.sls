@@ -1,19 +1,21 @@
-ssh-vault-present:
+{% for vault in pillar.split-ssh-vaults %}
+{{ vault.name }}-present:
   qvm.present:
-    - name: ssh-vault
-    - template: fedora-32
-    - label: black
-    - mem: 400
-    - vcpus: 2
+    - name: {{ vault.name }}
+    - template: {{ vault.template }}
+    - label: {{ vault.label }}
+    - mem: {{ vault.mem }}
+    - vcpus: {{ vault.vcpus }}
 
-ssh-vault-has-no-network-access:
+{{ vault.name }}-has-no-network-access:
   qvm.prefs:
-    - name: ssh-vault
+    - name: {{ vault.name }}
     - netvm: none
     - default_dispvm:
 
-ssh-vault-autostarts:
+{{ vault.name }}-autostarts:
   qvm.prefs:
-    - name: ssh-vault
-    - autostart: True
+    - name: {{ vault.name }}
+    - autostart: {{ vault.autostart }}
+{% endfor %}
 

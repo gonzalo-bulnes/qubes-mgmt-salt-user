@@ -1,5 +1,5 @@
-User Salt States for Qubes OS
-=============================
+User Salt Formulas for Qubes OS
+===============================
 
 A collection of user Salt formulas for Qubes OS.
 

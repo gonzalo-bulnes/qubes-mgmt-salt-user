@@ -17,7 +17,7 @@ Installation
 
 Build and sign an RPM package in order to install this Salt state in _dom0_. See [qubes-mgmt-salt-user-split-ssh][rpm].
 
-  [rpm]: https://github.com/gonzalo-bulnes/qubes-mgmt-salt-user/tree/main/states/split-ssh
+  [rpm]: https://github.com/gonzalo-bulnes/qubes-mgmt-salt-user/tree/main/packages/split-ssh
 
 ### Manual installation
 

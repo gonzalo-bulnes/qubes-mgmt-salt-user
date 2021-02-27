@@ -5,8 +5,8 @@ A collection of user Salt states for Qubes OS.
 
 - **Split-SSH** ([sources][split-ssh-src], [packaging][split-ssh-pkg])
 
-  [split-ssh-src]: ./states/split-ssh/src
-  [split-ssh-pkg]: ./states/split-ssh
+  [split-ssh-src]: ./packages/split-ssh/src
+  [split-ssh-pkg]: ./packages/split-ssh
 
 Usage
 -----

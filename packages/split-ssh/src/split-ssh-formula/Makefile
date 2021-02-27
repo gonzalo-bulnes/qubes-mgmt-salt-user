@@ -19,9 +19,13 @@ install: pillar state
 .PHONY: pillar
 pillar:
 	mkdir -p ${DESTDIR}${PILLAR_PREFIX}/split-ssh
+	cp ${SALT_PILLAR_PATH}client-template.sls ${DESTDIR}${PILLAR_PREFIX}/split-ssh
+	cp ${SALT_PILLAR_PATH}client.sls ${DESTDIR}${PILLAR_PREFIX}/split-ssh
 	cp ${SALT_PILLAR_PATH}clients.sls ${DESTDIR}${PILLAR_PREFIX}/split-ssh
 	cp ${SALT_PILLAR_PATH}config.yaml ${DESTDIR}${PILLAR_PREFIX}/split-ssh
 	cp ${SALT_PILLAR_PATH}init.jinja ${DESTDIR}${PILLAR_PREFIX}/split-ssh
+	cp ${SALT_PILLAR_PATH}vault-template.sls ${DESTDIR}${PILLAR_PREFIX}/split-ssh
+	cp ${SALT_PILLAR_PATH}vault.sls ${DESTDIR}${PILLAR_PREFIX}/split-ssh
 	cp ${SALT_PILLAR_PATH}vaults.sls ${DESTDIR}${PILLAR_PREFIX}/split-ssh
 
 .PHONY: state

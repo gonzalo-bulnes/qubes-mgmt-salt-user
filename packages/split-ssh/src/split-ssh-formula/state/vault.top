@@ -2,9 +2,11 @@ user:
   dom0:
     - split-ssh.vault.vm
 
-  fedora-32:
+  'split-ssh-role:vault-template':
+    - match: pillar
     - split-ssh.vault.packages
 
-  ssh-vault:
+  'split-ssh-role:vault':
+    - match: pillar
     - split-ssh.vault.config
     - split-ssh.vault.rpc

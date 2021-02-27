@@ -1,8 +1,15 @@
-ssh-client-present:
+{% for client in pillar.split-ssh-clients %}
+{{ client.name }}-present:
   qvm.present:
-    - name: ssh-client
-    - template: fedora-32
-    - label: blue
-    - mem: 400
-    - vcpus: 2
+    - name: {{ client.name }}
+    - template: {{ client.template }}
+    - label: {{ client.label }}
+    - mem: {{ client.mem }}
+    - vcpus: {{ client.vcpus }}
+
+{{ client.name }}-autostarts:
+  qvm.prefs:
+    - name: {{ client.name }}
+    - autostart: {{ client.autostart }}
+{% endfor %}
 

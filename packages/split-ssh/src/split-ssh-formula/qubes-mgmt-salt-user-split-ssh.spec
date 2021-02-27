@@ -25,6 +25,8 @@ make install DESTDIR=%{buildroot}
 %files
 %license LICENSE
 %doc README.md
+%config /srv/user_pillar/config.yaml
+/srv/user_pillar/split-ssh
 /srv/user_salt/split-ssh
 
 %changelog

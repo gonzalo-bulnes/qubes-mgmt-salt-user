@@ -5,4 +5,5 @@
     - mode: '0755'
     - makedirs: True
     - source: salt://split-ssh/policy/files/qubes.SSHAgent
+    - template: jinja
 

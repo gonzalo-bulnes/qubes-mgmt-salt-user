@@ -1,7 +1,7 @@
 User Salt States for Qubes OS
 =============================
 
-A collection of user Salt states for Qubes OS.
+A collection of user Salt formulas for Qubes OS.
 
 - **Split-SSH** ([sources][split-ssh-src], [packaging][split-ssh-pkg])
 
@@ -13,7 +13,7 @@ Usage
 
 ### Prerequisites
 
-Enable the Salt [user directories][qubes-user-dirs] if you haven't already. This allows to install Salt states without mixing them with the `base` states that are maintained by the Qubes OS team.
+Enable the Salt [user directories][qubes-user-dirs] if you haven't already. This allows to install Salt formulas without mixing them with the `base` formulas that are maintained by the Qubes OS team.
 
 ```sh
 sudo qubesctl top.enable qubes.user-dirs
@@ -29,11 +29,11 @@ sudo qubesctl state.apply
 
 ### Step-by-step
 
-This repository contains multiple states and it is not required to use them all. For each of them, the same enabling steps apply, and `split-ssh` will be used as an example.
+This repository contains multiple formulas and it is not required to use them all. For each of them, the same enabling steps apply, and `split-ssh` will be used as an example.
 
-#### Install the state
+#### Install the formula
 
-In order to be able to use a state, its definition should be present in the `/srv/user_salt/` directory of _dom0_.
+In order to be able to use a formula, the state definition should be present in the `/srv/user_salt/` directory of _dom0_, and the pillar definition in `/srv/user_pillar`.
 
 
 > ⚠ **Security warning**: Since any domain is _less trusted_ than _dom0_ (by definition), copying anything into _dom0_ requires extreme caution. See [References](#references) for details, and use own judgement.
@@ -43,11 +43,15 @@ In order to be able to use a state, its definition should be present in the `/sr
   [secure-update]: https://www.qubes-os.org/doc/dom0-secure-updates
 
 
-No matter how you decide to perform this step, the end result should be a directory containing one or more `.top` files (and the corresponding `.sls` and other files):
+No matter how you decide to perform this step, the end result should be a directory containing one or more `.top` files (and the corresponding `.sls` and other files), as well as a directory containing a `config.yaml` file:
 
 ```sh
-/srv/user_salt/split-ssh
+/srv/user_pillar/split-ssh # contains the configuration
+/srv/user_salt/split-ssh   # contains the .top files
 ```
+#### Adjust the configuration to fit your needs
+
+The state will be defined by the configuration stored in the pillar. In our example, you can find the default configuration in `/srv/user_pillar/split-ssh/config.yaml` and modify it to fit your needs.
 
 #### Enable the state
 
@@ -91,7 +95,7 @@ sudo qubesctl --all state.apply
 ```
 
 Each state targets one or more qubes, and if you know which qubes you're modifying you can save some time by targetting them specifically.
-For example, the `split-ssh` state targets `dom0` and the `fedora-32` template, as well as two qubes called `ssh-vault` and `ssh-client`:
+For example, the `split-ssh` state targets `dom0` by default, as well as the `fedora-32` template, and two qubes called `ssh-vault` and `ssh-client`:
 
 ```sh
 sudo qubesctl --targets=fedora-32,ssh-client,ssh-vault state.apply
@@ -100,7 +104,7 @@ sudo qubesctl --targets=fedora-32,ssh-client,ssh-vault state.apply
 Note that _dom0_ is always implicitly targetted by `qubesctl` (and appears in the output as `local`). If you know it doesn't need to be updated, you can skip _dom0_:
 
 ```sh
-sudo qubesctl --skip-dom0 --targets=fedora-32,ssh-client,ssh-vault state.apply # in this example, that would be enough if the qubes already exist
+sudo qubesctl --skip-dom0 --targets=fedora-32,ssh-client,ssh-vault state.apply # in this example, that would be enough if the client and vault qubes already exist
 ```
 
 References

@@ -1,1 +1,5 @@
-ssh-client ssh-vault ask
+{% for vault in pillar.split-ssh-vault %}
+{% for client in pillar.split-ssh-client %}
+{{ client.name }} {{ vault.name }} ask
+{% endfor %}
+{% endfor %}

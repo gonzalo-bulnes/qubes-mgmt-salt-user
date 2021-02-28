@@ -1,7 +1,7 @@
 Name:           qubes-mgmt-salt-user-split-ssh
-Version:        0.1.0
+Version:        0.2.0
 Release:        1%{?dist}
-Summary:        A Salt state that enables split-SSH in Qubes OS
+Summary:        A Salt formula that enables split-SSH in Qubes OS
 
 License:        GPLv2
 URL:            https://github.com/gonzalo-bulnes/qubes-mgmt-salt-user
@@ -11,7 +11,7 @@ Group:          System administration tools
 BuildArch:      noarch
 
 %description
-A Salt state that enables split-SSH in Qubes OS.
+A Salt formula that enables split-SSH in Qubes OS.
 
 %prep
 %setup -q
@@ -30,5 +30,8 @@ make install DESTDIR=%{buildroot}
 /srv/user_salt/split-ssh
 
 %changelog
+* Sun Feb 28 2021 Gonzalo Bulnes Guilpain <gon.bulnes@fastmail.com>
+- Ensure Salt pillar is installed
+
 * Mon Feb  8 2021 Gonzalo Bulnes Guilpain <gon.bulnes@fastmail.com>
 - Initial packaging

@@ -2,7 +2,7 @@
 NAME = qubes-mgmt-salt-user-split-ssh
 
 # The version of the sources
-VERSION ?= 0.2.1
+VERSION ?= 0.2.2
 
 # The release number for the current version of the sources
 # Tito is meant to manage this, but I haven't quite figured out that yet.

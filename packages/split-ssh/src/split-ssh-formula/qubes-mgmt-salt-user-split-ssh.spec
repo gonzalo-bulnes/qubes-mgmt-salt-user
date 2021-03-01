@@ -1,5 +1,5 @@
 Name:           qubes-mgmt-salt-user-split-ssh
-Version:        0.2.1
+Version:        0.2.2
 Release:        1%{?dist}
 Summary:        A Salt formula that enables split-SSH in Qubes OS
 

@@ -1,7 +1,9 @@
 
 # Ensure the SSH socket discoverability
 #
-# See /srv/salt/split-ssh in dom0 for details.
+# See /srv/user_salt/split-ssh in dom0 for details.
+{# Known limitation: currently all clients will be
+   configured to use the vault that is defined first. -#}
 {% set vault = pillar.get('split-ssh-vaults')|first -%}
 SSH_VAULT_VM="{{ vault.name  }}"
 

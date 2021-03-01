@@ -1,4 +1,4 @@
-{% for client in pillar.split-ssh-clients %}
+{% for client in pillar.get('split-ssh-clients') %}
 {{ client.name }}-present:
   qvm.present:
     - name: {{ client.name }}

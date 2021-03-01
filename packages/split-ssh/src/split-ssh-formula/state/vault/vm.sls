@@ -1,4 +1,4 @@
-{% for vault in pillar.split-ssh-vaults %}
+{% for vault in pillar.get('split-ssh-vaults') %}
 {{ vault.name }}-present:
   qvm.present:
     - name: {{ vault.name }}

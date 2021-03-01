@@ -1,8 +1,11 @@
 
 # Ensure the SSH socket discoverability
 #
-# See /srv/salt/split-ssh in dom0 for details.
-SSH_VAULT_VM="{{ pillar.split-ssh-vaults|first }}"
+# See /srv/user_salt/split-ssh in dom0 for details.
+{# Known limitation: currently all clients will be
+   configured to use the vault that is defined first. -#}
+{% set vault = pillar.get('split-ssh-vaults')|first -%}
+SSH_VAULT_VM="{{ vault.name  }}"
 
 if [[ "$SSH_VAULT_VM" != "" ]]; then
 	export SSH_AUTH_SOCK=~user/.SSH_AGENT_$SSH_VAULT_VM

@@ -54,6 +54,7 @@ user:
   {{ client_names|join(',') }}:
     - match: list
     - split-ssh.client
+    - split-ssh.vaults
 
   {{ vault_names|join(',') }}:
     - match: list

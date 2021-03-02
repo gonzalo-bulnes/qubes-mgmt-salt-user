@@ -1,0 +1,7 @@
+user:
+  dom0:
+    - split-gpg.backend.vm
+
+  'split-gpg-role:backend-template':
+    - match: pillar
+    - split-gpg.backend.packages

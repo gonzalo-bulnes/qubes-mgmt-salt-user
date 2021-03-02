@@ -1,0 +1,7 @@
+user:
+  dom0:
+    - split-gpg.vault.vm
+
+  'split-gpg-role:vault-template':
+    - match: pillar
+    - split-gpg.vault.packages

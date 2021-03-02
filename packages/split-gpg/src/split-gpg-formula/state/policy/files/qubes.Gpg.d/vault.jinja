@@ -1,0 +1,3 @@
+{% for vault in pillar.get('split-gpg-vaults') %}
+@anyvm {{ vault.name }} deny
+{% endfor %}

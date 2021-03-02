@@ -1,0 +1,4 @@
+user:
+  dom0:
+    - split-gpg.packages.qubes-gpg-split-dom0
+    - split-gpg.policy

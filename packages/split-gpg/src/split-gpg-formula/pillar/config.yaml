@@ -1,0 +1,25 @@
+---
+vaults:
+  - name: gpg-vault
+    template: fedora-32
+    label: black
+    mem: 400
+    vcpus: 2
+    autostart: False
+
+backends:
+  - name: gpg-backend
+    template: fedora-32
+    label: purple
+    mem: 400
+    vcpus: 2
+    autostart: True
+
+clients:
+  - name: gpg-client
+    template: fedora-32
+    label: blue
+    mem: 400
+    vcpus: 2
+    autostart: False
+

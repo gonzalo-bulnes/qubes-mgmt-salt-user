@@ -43,10 +43,10 @@ sudo qubesctl top.enable split-gpg.backend split-gpg.client split-gpg.policy spl
 Apply the state (if you modified the configuration, adjust the targets accordingly):
 
 ```sh
-sudo qubesctl --targets=fedora-32,gpg-backend,gpg-client,gpg-vault state.apply
+sudo qubesctl --targets=fedora-32,gpg-client state.apply
 ```
 
-**Note**: the configured **backend**, **client** and **vault** machines will be created if they don't exist. That is the point of using a Salt formula! They are part of the targets because because part of the configuration applies to them.
+**Note**: the configured **backend**, **client** and **vault** machines will be created if they don't exist. That is the point of using a Salt formula! The client is part of the targets because because part of the configuration applies to it.
 
 Once the state is enforced, create new GPG keys and subkeys in the **vault**, copy the subkey(s) to the **backend** using `qvm-copy` and import them using GPG. When you use `qubes-gpg-client-wrapper` in the **client**, it's the **backend**'s GPG that is be used. The master GPG key never needs (or should) leave the **vault**.
 

@@ -65,7 +65,7 @@ user:
     - match: list
     - split-gpg.vault-template
     {% endif -%}
-  {% elsif backend_templates == vault_templates %}
+  {% elif backend_templates == vault_templates %}
   {# Backend and vault templates are the same, client templates are different -#}
   {{ backend_templates|join(',') }}:
     - match: list
@@ -75,7 +75,7 @@ user:
   {{ client_templates|join(',') }}:
     - match: list
     - split-gpg.client-template
-  {% elsif client_templates == vault_templates %}
+  {% elif client_templates == vault_templates %}
   {# Client and vault templates are the same, backend templates are different -#}
   {{ client_templates|join(',') }}:
     - match: list

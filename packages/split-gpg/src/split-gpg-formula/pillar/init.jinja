@@ -1,0 +1,116 @@
+## Load config
+#{% load_yaml as config %}
+#{% include 'split-gpg/config.yaml' %}
+#{% endload %}
+#
+## Collect information about the backend(s)
+#{% set backend_names = [] %}
+#{% set backend_templates = [] %}
+#
+#{% for backend in config.backends %}
+#{{ backend_names.append(backend.name) }}
+#{{ backend_templates.append(backend.template) }}
+#{% endfor %}
+#
+## Collect information about the client(s)
+#{% set client_names = [] %}
+#{% set client_templates = [] %}
+#
+#{% for client in config.clients %}
+#{{ client_names.append(client.name) }}
+#{{ client_templates.append(client.template) }}
+#{% endfor %}
+#
+## Collect information about the vault(s)
+#{% set vault_names = [] %}
+#{% set vault_templates  = [] %}
+#
+#{% for vault in config.vaults %}
+#{{ vault_names.append(vault.name) }}
+#{{ vault_templates.append(vault.template) }}
+#{% endfor %}
+#
+## Deduplicate and sort the lists to allow comparisons
+## and ensure consistency
+#{% set backend_names = backend_names|unique|sort %}
+#{% set backend_templates = backend_templates|unique|sort %}
+#{% set client_names = client_names|unique|sort %}
+#{% set client_templates = client_templates|unique|sort %}
+#{% set vault_names = vault_names|unique|sort %}
+#{% set vault_templates = vault_templates|unique|sort %}
+---
+user:
+  dom0:
+    - split-gpg.backends
+    - split-gpg.clients
+    - split-gpg.vaults
+
+  {# Prevent duplicate keys error when backend and client templates are the same -#}
+  {% if backend_templates == client_templates -%}
+  {% if backend_templates == vault_templates -%}
+  {# Backend, client and vault templates are the same -#}
+  {{ backend_templates|join(',') }}:
+    - match: list
+    - split-gpg.backend-template
+    - split-gpg.client-template
+    - split-gpg.vault-template
+  {% else %}
+  {# Backend and client templates are the same, vault templates are different -#}
+  {{ backend_templates|join(',') }}:
+    - match: list
+    - split-gpg.backend-template
+    - split-gpg.client-template
+
+  {{ vault_templates|join(',') }}:
+    - match: list
+    - split-gpg.vault-template
+  {% endif -%}
+  {% elif backend_templates == vault_templates %}
+  {# Backend and vault templates are the same, client templates are different -#}
+  {{ backend_templates|join(',') }}:
+    - match: list
+    - split-gpg.backend-template
+    - split-gpg.vault-template
+
+  {{ client_templates|join(',') }}:
+    - match: list
+    - split-gpg.client-template
+  {% elif client_templates == vault_templates %}
+  {# Client and vault templates are the same, backend templates are different -#}
+  {{ client_templates|join(',') }}:
+    - match: list
+    - split-gpg.client-template
+    - split-gpg.vault-template
+
+  {{ backend_templates|join(',') }}:
+    - match: list
+    - split-gpg.backend-template
+  {% else %}
+  {# All templates are different -#}
+  {{ backend_templates|join(',') }}:
+    - match: list
+    - split-gpg.backend-template
+
+  {{ client_templates|join(',') }}:
+    - match: list
+    - split-gpg.client-template
+
+  {{ vault_templates|join(',') }}:
+    - match: list
+    - split-gpg.vault-template
+  {% endif %}
+
+  {#- The backends, clients and vaults themselves won't be the same qubes (split-GPG) -#}
+
+  {{ backend_names|join(',') }}:
+    - match: list
+    - split-gpg.backend
+
+  {{ client_names|join(',') }}:
+    - match: list
+    - split-gpg.client
+    - split-gpg.backends
+
+  {{ vault_names|join(',') }}:
+    - match: list
+    - split-gpg.vault

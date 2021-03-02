@@ -1,0 +1,4 @@
+{# Known limitation: currently all clients will be
+   configured to use the backend that is defined first. -#}
+{% set backend = pillar.get('split-gpg-backends')|first -%}
+{{ backend.name }}

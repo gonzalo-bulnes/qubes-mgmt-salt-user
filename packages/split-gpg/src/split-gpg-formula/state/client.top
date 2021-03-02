@@ -1,0 +1,11 @@
+user:
+  dom0:
+    - split-gpg.client.vm
+
+  'split-gpg-role:client-template':
+    - match: pillar
+    - split-gpg.client.packages
+
+  'split-gpg-role:client':
+    - match: pillar
+    - split-gpg.client.config

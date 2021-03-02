@@ -1,0 +1,74 @@
+# The name of the RPM package
+NAME = qubes-mgmt-salt-user-split-gpg
+
+# The version of the sources
+VERSION ?= 0.1.0
+
+# The release number for the current version of the sources
+# Tito is meant to manage this, but I haven't quite figured out that yet.
+RELEASE ?= 1
+
+# The following parameters repeat the RPM spec configuration.
+# I like the convenience of automating these tasks, but haven't
+# quite figuresd out how to DRY this yet.
+TMP = /tmp/tito/
+SOURCE_ARCHIVE_NAME ?= ${NAME}-${VERSION}.tar.gz
+SOURCE_ARCHIVE_PATH = ${TMP}
+SRPM_PACKAGE_NAME ?= ${NAME}-${VERSION}-${RELEASE}.fc32.src.rpm
+SRPM_PACKAGE_PATH = ${TMP}
+RPM_PACKAGE_NAME ?= ${NAME}-${VERSION}-${RELEASE}.fc32.noarch.rpm
+RPM_PACKAGE_PATH = ${TMP}noarch/
+
+# The ID of your GPG key will likely be different
+GPG_NAME ?= "Key ID"
+
+# The formula directory name follows Salt conventions
+SALT_FORMULA_PATH = src/split-gpg-formula/
+
+# I use split-GPG on Qubes OS, replace this by "gpg" if needed
+define GPG_CMD
+	qubes-gpg-client-wrapper
+endef
+
+# Default target, what I'd likely want to do most often
+.PHONY: all
+all: verify-sources build test sign-source-archive sign-source-package sign-package
+	@echo "Packages built successfully in ${TMP}"
+	@-tree ${TMP}
+
+# Unrelated to Tito, this follows the Qubes OS conventions
+# and I find it convenient to sign contributions that are not signed.
+# See https://www.qubes-os.org/doc/code-signing/#using-pgp-with-git
+.PHONY: verify-sources
+verify-sources:
+	git tag -v `git describe`
+
+# Build the source archive, the source package (SRPM) and the package (RPM)
+.PHONY: build
+build:
+	cd ${SALT_FORMULA_PATH} && tito build --rpm --offline && cd -
+
+# Test the RPM package
+.PHONY: test
+test:
+	# not sure yet how to automate this
+
+# Sign the source archive
+.PHONY: sign-source-archive
+sign-source-archive:
+	${GPG_CMD} --local-user "${GPG_NAME}" --sign --armor --output ${SOURCE_ARCHIVE_PATH}${SOURCE_ARCHIVE_NAME}.asc --detach ${SOURCE_ARCHIVE_PATH}${SOURCE_ARCHIVE_NAME}
+
+# Sign the source package (SRPM)
+.PHONY: sign-source-package
+sign-source-package:
+	rpm --resign ${SRPM_PACKAGE_PATH}${SRPM_PACKAGE_NAME}
+
+# Sign the package (RPM)
+.PHONY: sign-package
+sign-package:
+	rpm --resign ${RPM_PACKAGE_PATH}${RPM_PACKAGE_NAME}
+
+# Remove all building artifacts (including the packages)
+.PHONY: clean
+clean:
+	-rm -r ${TMP}

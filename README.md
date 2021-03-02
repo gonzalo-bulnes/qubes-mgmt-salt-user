@@ -3,8 +3,11 @@ User Salt Formulas for Qubes OS
 
 A collection of user Salt formulas for Qubes OS.
 
+- **Split-GPG** ([sources][split-gpg-src], [packaging][split-gpg-pkg])
 - **Split-SSH** ([sources][split-ssh-src], [packaging][split-ssh-pkg])
 
+  [split-gpg-src]: ./packages/split-gpg/src
+  [split-gpg-pkg]: ./packages/split-gpg
   [split-ssh-src]: ./packages/split-ssh/src
   [split-ssh-pkg]: ./packages/split-ssh
 

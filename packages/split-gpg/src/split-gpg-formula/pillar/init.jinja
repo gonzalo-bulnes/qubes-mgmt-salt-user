@@ -47,15 +47,15 @@ user:
 
   {# Prevent duplicate keys error when backend and client templates are the same -#}
   {% if backend_templates == client_templates -%}
-    {% if backend_templates == vault_templates -%}
-    {# Backend, client and vault templates are the same -#}
+  {% if backend_templates == vault_templates -%}
+  {# Backend, client and vault templates are the same -#}
   {{ backend_templates|join(',') }}:
     - match: list
     - split-gpg.backend-template
     - split-gpg.client-template
     - split-gpg.vault-template
-    {% else %}
-    {# Backend and client templates are the same, vault templates are different -#}
+  {% else %}
+  {# Backend and client templates are the same, vault templates are different -#}
   {{ backend_templates|join(',') }}:
     - match: list
     - split-gpg.backend-template
@@ -64,7 +64,7 @@ user:
   {{ vault_templates|join(',') }}:
     - match: list
     - split-gpg.vault-template
-    {% endif -%}
+  {% endif -%}
   {% elif backend_templates == vault_templates %}
   {# Backend and vault templates are the same, client templates are different -#}
   {{ backend_templates|join(',') }}:

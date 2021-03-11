@@ -110,6 +110,76 @@ Note that _dom0_ is always implicitly targetted by `qubesctl` (and appears in th
 sudo qubesctl --skip-dom0 --targets=fedora-32,ssh-client,ssh-vault state.apply # in this example, that would be enough if the client and vault qubes already exist
 ```
 
+Development
+-----------
+
+In order to build packages for a given formula (e.g. the split-SSH formula):
+
+1. Set the formula version number and the package release number:
+
+   ```sh
+   # The name of the Salt formula
+   export FORMULA=split-ssh
+
+   # The version of the formula (sources)
+   export VERSION=0.8.0
+
+   # The release of the RPM package
+   export RELEASE=4
+
+   make release
+   ```
+
+2. Commit the changes, create a Git tag for Tito, and a [signed tag][stag] for sources verification purposes:
+
+   ```sh
+   # This uses all the environment variables defined above.
+
+   # The GPG key to verify the sources and sign the RPM packages
+   export GPG_NAME="Key ID"
+
+   # The commit message can be whatever you want
+   git commit -m "Release ${FORMULA}-${VERSION}-${RELEASE}"
+
+   # This tag is required to build the packages with Tito
+   git tag qubes-mgmt-salt-user-${FORMULA}-${VERSION}-${RELEASE}
+
+   # Any signed tag would do
+   git stag
+   ```
+
+3. Build the packages:
+
+   ```sh
+   # This uses all the environment variables defined above.
+
+   make packages
+   ```
+
+4. The packages will be created in `/tmp/tito`:
+
+   ```sh
+   tree /tmp/tito
+
+   # /tmp/tito/
+   # ├── noarch
+   # │   └── qubes-mgmt-salt-user-split-ssh-0.8.0-4.fc32.noarch.rpm
+   # ├── qubes-mgmt-salt-user-split-ssh-0.8.0-4.fc32.src.rpm
+   # ├── qubes-mgmt-salt-user-split-ssh-0.8.0.tar.gz
+   # └── qubes-mgmt-salt-user-split-ssh-0.8.0.tar.gz.asc
+   ```
+
+5. Unset the environment variables:
+
+   ```sh
+   unset FORMULA
+   unset VERSION
+   unset RELEASE
+   unset GPG_NAME
+   ```
+
+  [stag]: https://www.qubes-os.org/doc/code-signing/#using-pgp-with-git
+
 References
 ----------
 

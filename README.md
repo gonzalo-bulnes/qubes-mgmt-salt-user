@@ -113,6 +113,59 @@ sudo qubesctl --skip-dom0 --targets=fedora-32,ssh-client,ssh-vault state.apply #
 Development
 -----------
 
+### Pre-requisites
+
+#### Platform
+
+I personally build the packages on the target platform, because Qubes OS templates make that easy, and it makes sense to me to do it. For now I'll assume you do the same.
+
+For Qubes OS R4.1, that means a **Fedora 32** _qube_. That _qube_ can be completely offline.
+
+
+#### Tito and rpm-sign
+
+[Tito][tito] is in charge of building the RPM packages. Make sure it is installed:
+
+```sh
+sudo dnf install tito
+```
+
+The entire point of building our own packages is being able to sign them. To do that, `rpm-sign` must be installed.
+
+```sh
+sudo dnf install rpm-sign
+```
+
+  [tito]: https://github.com/rpm-software-management/tito
+
+#### Using RPM with Split-GPG
+
+If you use _Split-GPG_ on Qubes OS, some configuration is needed to ensure that RPM tooling can sign the packages. That can be done adding the following to the `~/.rpmmarcos` file of the _qube_ where you'll build the packages. (Of course, that qube also needs allow the use of Split GPG.)
+
+```specfile
+# ...
+
+# Use split-GPG. The options are adjusted below.
+%__gpg /usr/bin/qubes-gpg-client-wrapper
+
+# Your signing key name would be different:
+%_gpg_name Package Signing Key
+
+# Based on the default command defined in /usr/lib/rpm/macros
+# Removed the options: --no-armor --no-verbose --no-secmem-warning because qubes-gpg-client-wrapper doesn't support them
+# Separated the option -o from -sb because qubes-gpg-client-wrapper was getting confused
+%__gpg_sign_cmd                 %{__gpg} \
+        gpg \
+        %{?_gpg_digest_algo:--digest-algo %{_gpg_digest_algo}} \
+        %{?_gpg_sign_cmd_extra_args:%{_gpg_sign_cmd_extra_args}} \
+        -u "%{_gpg_name}" -sb -o %{__signature_filename} %{__plaintext_filename}
+# ...
+```
+
+Note: you'll export the name of the GPG key as `GPG_NAME` later on. Both need to match!
+
+### Building packages
+
 In order to build packages for a given formula (e.g. the split-SSH formula):
 
 1. Set the formula version number and the package release number:

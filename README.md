@@ -120,7 +120,7 @@ Development
 
 I personally build the packages on the target platform, because Qubes OS templates make that easy, and it makes sense to me to do it. For now I'll assume you do the same.
 
-For Qubes OS R4.1, that means a **Fedora 32** _qube_. That _qube_ can be completely offline.
+For Qubes OS R4.1, that means a **Fedora 32** _qube_. That _qube_ can be completely offline, and it can be disposable.
 
 
 #### Tito and rpm-sign
@@ -239,6 +239,12 @@ In order to build packages for a given formula (e.g. the split-SSH formula):
    ```
 
   [stag]: https://www.qubes-os.org/doc/code-signing/#using-pgp-with-git
+
+### Publishing packages
+
+See 🌳 [qubes-packages][qubes-packages], a template repository of RPM packages for Qubes OS. That project contains instructions and code to create your own RPM repository and manage it on untrusted infrastructure.
+
+  [qubes-packages]: https://github.com/gonzalo-bulnes/qubes-packages
 
 References
 ----------

@@ -15,6 +15,17 @@ A collection of user Salt formulas for Qubes OS.
   [split-ssh-src]: ./packages/split-ssh/src
   [split-ssh-pkg]: ./packages/split-ssh
 
+Overview
+--------
+
+This repository contains a collection of Salt formulas that I use in Qubes OS, along with **the tooling necessary to create RPM packages** in order to get those Salt formulas into _dom0_ in a reasonably secure fashion.
+
+See [RPM packaging in the context of Qubes OS][rpm-packaging] for more information about why RPM packages may be a good way to copy files into _dom0_.
+
+See also the [References](#references) section in this README, bear in mind that your cirumstances and mine could be different, and use own judgement.
+
+  [rpm-packaging]: https://docs.gonzalobulnes.com/configuration_management.html#rpm-packaging
+
 Usage
 -----
 
@@ -247,7 +258,7 @@ Please note that this project is released with a [Contributor Code of Conduct][c
 License
 -------
 
-Copyright © 2021 Gonzalo Bulnes Guilpain
+Copyright © 2021–2023 Gonzalo Bulnes Guilpain
 
 This project is released under the GNU General Public License v2 (see [LICENSE](LICENSE.md)).
 

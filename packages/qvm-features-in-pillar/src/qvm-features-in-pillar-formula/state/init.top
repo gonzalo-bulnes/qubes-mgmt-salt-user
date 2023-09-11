@@ -1,0 +1,3 @@
+user:
+  dom0:
+    - qvm-features-in-pillar

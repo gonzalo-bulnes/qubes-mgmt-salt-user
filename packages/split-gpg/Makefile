@@ -4,7 +4,7 @@
 NAME = qubes-mgmt-salt-user-split-gpg
 
 # The version of the sources
-CURRENT_VERSION ?= 0.1.2
+CURRENT_VERSION ?= 1.0.0
 
 # The release number for the current version of the sources
 # Tito is meant to manage this, but I haven't quite figured out that yet.

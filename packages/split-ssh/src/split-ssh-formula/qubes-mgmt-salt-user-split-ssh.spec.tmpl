@@ -24,21 +24,16 @@ make
 %install
 make install DESTDIR=%{buildroot}
 
-# Work around missing pillar_root for /srv/user_pillar
-mkdir -p %{buildroot}/srv/pillar/_tops/user/
-ln -s /srv/user_pillar/split-ssh %{buildroot}/srv/pillar/split-ssh
-ln -s /srv/user_pillar/split-ssh/init.jinja %{buildroot}/srv/pillar/_tops/user/split-ssh.top
-
 %files
 %license LICENSE
-%doc README.md
-%config /srv/user_pillar/split-ssh/config.yaml
-/srv/user_pillar/split-ssh
+%doc README.md CHANGELOG.md
 /srv/user_salt/split-ssh
-/srv/pillar/split-ssh
-/srv/pillar/_tops/user/split-ssh.top
 
 %changelog
+* Fri Sep 15 2023 Gonzalo Bulnes Guilpain <gon.bulnes@fastmail.com>
+- Remove workaround introduced in March 2021
+- Add change log of Salt formula as documentation
+
 * Mon Mar 01 2021 Gonzalo Bulnes Guilpain <gon.bulnes@fastmail.com>
 - Ensure pillar is enabled by working around missing pillar_root for /srv/user_pillar
 

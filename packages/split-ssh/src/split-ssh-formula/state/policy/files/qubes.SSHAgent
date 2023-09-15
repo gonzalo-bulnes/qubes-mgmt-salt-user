@@ -1,5 +1,2 @@
-{% for vault in pillar.get('split-ssh-vaults') %}
-{% for client in pillar.get('split-ssh-clients') %}
-{{ client.name }} {{ vault.name }} ask
-{% endfor %}
-{% endfor %}
+@tag:split-ssh-client @tag:split-ssh-vault ask
+@anyvm @anyvm deny

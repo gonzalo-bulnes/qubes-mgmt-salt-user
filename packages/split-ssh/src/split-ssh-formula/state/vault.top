@@ -1,12 +1,9 @@
 user:
-  dom0:
-    - split-ssh.vault.vm
-
-  'split-ssh-role:vault-template':
+  qubes:tags:split-ssh-vault-template:
     - match: pillar
     - split-ssh.vault.packages
 
-  'split-ssh-role:vault':
+  qubes:tags:split-ssh-vault:
     - match: pillar
     - split-ssh.vault.config
     - split-ssh.vault.rpc

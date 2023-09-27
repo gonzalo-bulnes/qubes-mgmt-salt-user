@@ -7,6 +7,13 @@ Files: *
 Copyright: 2021–2023 Gonzalo Bulnes Guilpain <gon.bulnes@fastmail.com>
 License: GPL-2.0-or-later
 
+# Exclude files that have licensing information in comments.
+# The reuse tool does aggregate copyright and license statements,
+# so these are intentionally left blank in this file.
+Files: packages/qvm-features-in-pillar/*qvm_features.py packages/qvm-tags-in-pillar/*qvm_tags.py
+Copyright:
+License:
+
 Files: .gitignore
 Copyright: 2021 Gonzalo Bulnes Guilpain <gon.bulnes@fastmail.com>
 License: CC0-1.0

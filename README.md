@@ -266,7 +266,8 @@ Please note that this project is released with a [Contributor Code of Conduct][c
 License
 -------
 
-Copyright © 2021–2023 Gonzalo Bulnes Guilpain
+[![REUSE Compliance](https://github.com/gonzalo-bulnes/qubes-mgmt-salt-user/actions/workflows/reuse-compliance.yml/badge.svg)](https://github.com/gonzalo-bulnes/qubes-mgmt-salt-user/actions/workflows/reuse-compliance.yml)
 
-This project is released under the GNU General Public License v2 (see [LICENSE](LICENSE.md)).
+This project complies with the [REUSE][reuse] initiative recommendations. All files include licensing information, have a companion `.license` file, or are listed in `.reuse/dep5`.
 
+  [reuse]: https://reuse.software

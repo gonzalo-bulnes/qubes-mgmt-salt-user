@@ -3,13 +3,15 @@ User Salt Formulas for Qubes OS
 
 A collection of user Salt formulas for Qubes OS.
 
-- **QVM Features in Salt Pillar** ([sources][qvm-features-in-pillar-src])
-- **QVM Tags in Salt Pillar** ([sources][qvm-tags-in-pillar-src])
+- **QVM Features in Salt Pillar** ([sources][qvm-features-in-pillar-src], [packaging][qvm-features-in-pillar-pkg])
+- **QVM Tags in Salt Pillar** ([sources][qvm-tags-in-pillar-src], [packaging][qvm-tags-in-pillar-pkg])
 - **Split-GPG** ([sources][split-gpg-src], [packaging][split-gpg-pkg])
 - **Split-SSH** ([sources][split-ssh-src], [packaging][split-ssh-pkg])
 
   [qvm-features-in-pillar-src]: ./packages/qvm-features-in-pillar/src
+  [qvm-features-in-pillar-pkg]: ./packages/qvm-features-in-pillar
   [qvm-tags-in-pillar-src]: ./packages/qvm-tags-in-pillar/src
+  [qvm-tags-in-pillar-pkg]: ./packages/qvm-tags-in-pillar
   [split-gpg-src]: ./packages/split-gpg/src
   [split-gpg-pkg]: ./packages/split-gpg
   [split-ssh-src]: ./packages/split-ssh/src

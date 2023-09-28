@@ -1,0 +1,20 @@
+user:
+  dom0:
+    - split-ssh.policy
+
+  qubes:tags:split-ssh-vault-template:
+    - match: pillar
+    - split-ssh.vault.packages
+
+  qubes:tags:split-ssh-vault:
+    - match: pillar
+    - split-ssh.vault.config
+    - split-ssh.vault.rpc
+
+  qubes:tags:split-ssh-client-template:
+    - match: pillar
+    - split-ssh.client.packages
+
+  qubes:tags:split-ssh-client:
+    - match: pillar
+    - split-ssh.client.sock

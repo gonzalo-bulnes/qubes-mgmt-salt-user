@@ -1,11 +1,8 @@
 user:
-  dom0:
-    - split-ssh.client.vm
-
-  'split-ssh-role:client-template':
+  qubes:tags:split-ssh-client-template:
     - match: pillar
     - split-ssh.client.packages
 
-  'split-ssh-role:client':
+  qubes:tags:split-ssh-client:
     - match: pillar
     - split-ssh.client.sock

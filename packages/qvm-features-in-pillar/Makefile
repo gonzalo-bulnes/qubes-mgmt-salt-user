@@ -8,7 +8,7 @@ CURRENT_VERSION ?= 1.0.0
 
 # The release number for the current version of the sources
 # Tito is meant to manage this, but I haven't quite figured out that yet.
-CURRENT_RELEASE ?= 1
+CURRENT_RELEASE ?= 2
 
 # The following parameters repeat the RPM spec configuration.
 # I like the convenience of automating these tasks, but haven't

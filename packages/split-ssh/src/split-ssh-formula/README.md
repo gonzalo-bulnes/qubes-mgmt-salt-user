@@ -20,8 +20,11 @@ Build and sign an RPM package in order to install this Salt formula in _dom0_. S
 ### Manual installation
 
 - Enable the Salt _user directories_ ([how-to][user-dirs-how-to])
+- Install the [`qvm-tags-in-pillar` formula][qvm-tags-in-pillar]
 - Copy, or type the contents of the `state/` directory into `/srv/user_salt/split-ssh/`.
 
+  [qvm-tags-in-pillar]: ../../../qvm-tags-in-pillar/src/qvm-tags-in-pillar-formula
+  
 Usage
 -----
 
@@ -62,7 +65,7 @@ Enable the top files:
 ```sh
 # dom0
 
-sudo qubesctl top.enable split-ssh
+sudo qubesctl top.enable qvm-tags-in-pillar split-ssh
 ```
 
 Apply the state (if you modified the configuration, adjust the targets accordingly):

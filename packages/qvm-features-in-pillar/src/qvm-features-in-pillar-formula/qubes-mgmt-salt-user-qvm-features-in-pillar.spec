@@ -2,7 +2,7 @@
 
 Name:           qubes-mgmt-salt-user-qvm-features-in-pillar
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Salt formula that exposes QVM features in Salt pillar
 
 License:        GPLv2
@@ -30,5 +30,8 @@ make install DESTDIR=%{buildroot}
 /srv/user_salt/qvm-features-in-pillar
 
 %changelog
+* Thu Sep 28 2023 Gonzalo Bulnes Guilpain <gon.bulnes@fastmail.com>
+- Re-build with RPM configuration that works towards reproducible builds
+
 * Wed Sep 13 2023 Gonzalo Bulnes Guilpain <gon.bulnes@fastmail.com>
 - Initial packaging

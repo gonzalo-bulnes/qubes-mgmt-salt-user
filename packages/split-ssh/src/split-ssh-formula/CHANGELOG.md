@@ -5,7 +5,17 @@ All notable changes will be documented in this file.
 The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2023-06-05
+## [2.0.0] - 2023-09-28
+
+## Changed
+
+- The formula no longer creates _qubes_, instead it expects existing qubes to have a specific set to QVM tags. See README for usage instructions. (Qubes that were created by a previous version of this tool can be tagged retroactively.)
+
+## Fixed
+
+- Different Split-SSH _clients_ can no have different Split-SSH _backends_. It was a known limitation of v1.0.0 that all clients would be configured to use whichever backend was defined first.
+
+## [1.0.0] - 2023-09-05
 
 ## Added
 
